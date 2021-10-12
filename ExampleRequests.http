@@ -1,0 +1,55 @@
+POST http://localhost:3000/create
+content-type: application/json
+
+{
+  "username": "aUsername1",
+  "email": "email1@example.com",
+  "password": "password",
+  "active": true
+}
+
+###
+POST http://localhost:3000/create
+content-type: application/json
+
+{
+  "username": "aUsername",
+  "email": "email2@example.com",
+  "password": "password",
+  "active": false
+}
+
+### Get all users
+GET http://localhost:3000/all
+
+### Get user by _id
+GET http://localhost:3000/id/61656fb314bad97c8cd4b3f0
+
+### Get via query params
+GET http://localhost:3000/search
+  ?username=aUsername1
+  &email=email1@example.com
+
+### Get via query params
+GET http://localhost:3000/search
+  ?active=false
+
+### Authenticate user and get token
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+  "username": "aUsername3",
+  "password": "password"
+}
+
+###
+DELETE http://localhost:3000/delete/61656fcf14bad97c8cd4b3f2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFVc2VybmFtZTEiLCJlbWFpbCI6ImVtYWlsMUBleGFtcGxlLmNvbSIsImlhdCI6MTYzNDAzNzkzM30.EzdvTx_NWlJAG96fnLo8AYMrn2-205Sd9hksVj3OSpg
+
+###
+DELETE http://localhost:3000/delete?active=true
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFVc2VybmFtZTEiLCJlbWFpbCI6ImVtYWlsMUBleGFtcGxlLmNvbSIsImlhdCI6MTYzMjg1OTIxM30.JOTthNFNbYs5MBrrzwtyucKjDL3_EjADmq6FI7-7H8U
+
+### Get request to unkmown route
+GET http://localhost:3000/doesnotexist
